@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Adel</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #080619 0%, #1a0e3e 50%, #080619 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* خلفية متحركة */
+        .stars {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s ease-in-out infinite;
+        }
+
+        @keyframes twinkle {
+            0%, 100% { opacity: 0.3; transform: scale(1); }
+            50% { opacity: 1; transform: scale(1.5); }
+        }
+
+        .message {
+            text-align: center;
+            color: #9795ad;
+            margin-bottom: 80px;
+            z-index: 10;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .message h1 {
+            font-size: 4rem;
+            margin-bottom: 20px;
+            font-weight: bold;
+            background: linear-gradient(45deg, #9795ad, #d4a5f5, #ff9a9e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 0 30px rgba(151, 149, 173, 0.3);
+            animation: glow 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 10px rgba(151, 149, 173, 0.5)); }
+            to { filter: drop-shadow(0 0 20px rgba(212, 165, 245, 0.8)); }
+        }
+
+        .message p {
+            font-size: 2rem;
+            color: #c5c3d8;
+            font-weight: 300;
+        }
+
+        .cake-container {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            animation: floatUp 1.5s ease-out;
+            z-index: 10;
+        }
+
+        @keyframes floatUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .candle {
+            position: relative;
+            width: 14px;
+            height: 70px;
+            background: linear-gradient(to right, #ff6b6b 0%, #ff8787 50%, #ff6b6b 100%);
+            border-radius: 4px 4px 0 0;
+            margin-bottom: -5px;
+            z-index: 10;
+            box-shadow: 
+                0 0 15px rgba(255, 107, 107, 0.6),
+                inset -2px 0 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .candle::before {
+            content: '';
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 5px;
+            height: 10px;
+            background: linear-gradient(to bottom, #1a1a1a, #333);
+            border-radius: 2px 2px 0 0;
+        }
+
+        .candle::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 3px;
+            width: 2px;
+            height: 40px;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.4), transparent);
+            border-radius: 2px;
+        }
+
+        .flame {
+            position: absolute;
+            top: -45px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 25px;
+            height: 40px;
+            background: radial-gradient(ellipse at center, #fff9e6 0%, #ffeb3b 20%, #ff9800 50%, #ff5722 80%, transparent 100%);
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            animation: flicker 0.2s ease-in-out infinite alternate;
+            filter: blur(1px);
+            box-shadow: 0 0 20px #ffeb3b;
+        }
+
+        .flame::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 12px;
+            height: 20px;
+            background: radial-gradient(ellipse at center, #fffcf0 0%, #fff9e6 40%, transparent 70%);
+            border-radius: 50%;
+        }
+
+        .flame.blown {
+            animation: blowOut 0.6s ease-out forwards;
+        }
+
+        @keyframes flicker {
+            0% {
+                transform: translateX(-50%) scale(1) translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(-50%) scale(1.08) translateY(-3px);
+                opacity: 0.92;
+            }
+        }
+
+        @keyframes blowOut {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 1;
+            }
+            30% {
+                transform: translateX(-35%) scale(0.9) skewX(-25deg);
+                opacity: 0.7;
+            }
+            60% {
+                transform: translateX(-20%) scale(0.5) skewX(-40deg);
+                opacity: 0.3;
+            }
+            100% {
+                transform: translateX(-5%) scale(0.1) skewX(-50deg);
+                opacity: 0;
+            }
+        }
+
+        .glow {
+            position: absolute;
+            top: -50px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: radial-gradient(circle, rgba(255, 235, 59, 0.5) 0%, rgba(255, 152, 0, 0.3) 40%, transparent 70%);
+            border-radius: 50%;
+            animation: glowPulse 0.2s ease-in-out infinite alternate;
+        }
+
+        .glow.blown {
+            animation: fadeOutGlow 0.6s ease-out forwards;
+        }
+
+        @keyframes glowPulse {
+            0% {
+                transform: translateX(-50%) scale(1);
+                opacity: 0.7;
+            }
+            100% {
+                transform: translateX(-50%) scale(1.15);
+                opacity: 0.9;
+            }
+        }
+
+        @keyframes fadeOutGlow {
+            to {
+                opacity: 0;
+                transform: translateX(-50%) scale(0.5);
+            }
+        }
+
+        .smoke {
+            position: absolute;
+            top: -20px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 3px;
+            height: 30px;
+            background: linear-gradient(to top, rgba(150, 150, 150, 0.6), transparent);
+            border-radius: 50%;
+            opacity: 0;
+        }
+
+        .smoke.active {
+            animation: rising 2s ease-out forwards;
+        }
+
+        @keyframes rising {
+            0% {
+                opacity: 0.8;
+                transform: translateX(-50%) translateY(0) scale(1);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-60px) scale(2);
+            }
+        }
+
+        .cake {
+            width: 320px;
+            height: 220px;
+            position: relative;
+            filter: drop-shadow(0 15px 30px rgba(0, 0, 0, 0.5));
+        }
+
+        .cake-layer {
+            position: absolute;
+            width: 100%;
+            border-radius: 20px;
+        }
+
+        .layer-top {
+            height: 70px;
+            background: linear-gradient(135deg, #ff9a9e 0%, #fecfef 50%, #fbc2eb 100%);
+            top: 0;
+            z-index: 3;
+            border: 4px solid #ff6b9d;
+            box-shadow: 
+                inset 0 -5px 10px rgba(0, 0, 0, 0.1),
+                0 5px 15px rgba(255, 107, 157, 0.4);
+        }
+
+        .layer-middle {
+            height: 75px;
+            background: linear-gradient(135deg, #a8edea 0%, #fed6e3 50%, #a8e6cf 100%);
+            top: 70px;
+            z-index: 2;
+            border: 4px solid #7dd3c0;
+            box-shadow: 
+                inset 0 -5px 10px rgba(0, 0, 0, 0.1),
+                0 5px 15px rgba(125, 211, 192, 0.4);
+        }
+
+        .layer-bottom {
+            height: 75px;
+            background: linear-gradient(135deg, #fbc2eb 0%, #a6c1ee 50%, #d4a5f5 100%);
+            top: 145px;
+            z-index: 1;
+            border: 4px solid #d4a5f5;
+            box-shadow: 
+                inset 0 -5px 10px rgba(0, 0, 0, 0.1),
+                0 8px 20px rgba(212, 165, 245, 0.4);
+        }
+
+        .frosting {
+            position: absolute;
+            width: 100%;
+            height: 18px;
+            z-index: 4;
+        }
+
+        .frosting-top {
+            top: 66px;
+            background: repeating-linear-gradient(
+                90deg,
+                #ff6b9d 0px,
+                #ff6b9d 25px,
+                transparent 25px,
+                transparent 28px
+            );
+        }
+
+        .frosting-middle {
+            top: 141px;
+            background: repeating-linear-gradient(
+                90deg,
+                #7dd3c0 0px,
+                #7dd3c0 25px,
+                transparent 25px,
+                transparent 28px
+            );
+        }
+
+        .frosting-drop {
+            position: absolute;
+            width: 18px;
+            height: 24px;
+            background: #ff6b9d;
+            border-radius: 0 0 50% 50%;
+            animation: drip 3s ease-in-out infinite;
+            box-shadow: inset -2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .drop1 { left: 40px; top: 70px; animation-delay: 0s; }
+        .drop2 { left: 110px; top: 70px; animation-delay: 0.5s; }
+        .drop3 { left: 180px; top: 70px; animation-delay: 1s; }
+        .drop4 { left: 250px; top: 70px; animation-delay: 1.5s; }
+
+        @keyframes drip {
+            0%, 100% { transform: translateY(0) scaleY(1); }
+            50% { transform: translateY(6px) scaleY(1.1); }
+        }
+
+        .decoration {
+            position: absolute;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            z-index: 5;
+            box-shadow: 
+                inset -2px 2px 4px rgba(255, 255, 255, 0.5),
+                0 3px 6px rgba(0, 0, 0, 0.3);
+            animation: sparkle 2s ease-in-out infinite;
+        }
+
+        @keyframes sparkle {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        .dec1 { background: radial-gradient(circle at 30% 30%, #ff9dc6, #ff6b9d); top: 30px; left: 50px; animation-delay: 0s; }
+        .dec2 { background: radial-gradient(circle at 30% 30%, #a8f5e5, #7dd3c0); top: 30px; left: 100px; animation-delay: 0.2s; }
+        .dec3 { background: radial-gradient(circle at 30% 30%, #ffe57f, #ffd700); top: 30px; left: 150px; animation-delay: 0.4s; }
+        .dec4 { background: radial-gradient(circle at 30% 30%, #ff9dc6, #ff6b9d); top: 30px; left: 200px; animation-delay: 0.6s; }
+        .dec5 { background: radial-gradient(circle at 30% 30%, #a8f5e5, #7dd3c0); top: 30px; left: 250px; animation-delay: 0.8s; }
+
+        .instruction {
+            margin-top: 50px;
+            color: #9795ad;
+            font-size: 1.3rem;
+            text-align: center;
+            padding: 15px 30px;
+            background: rgba(151, 149, 173, 0.1);
+            border-radius: 30px;
+            border: 2px solid rgba(151, 149, 173, 0.3);
+            animation: fadeInOut 2s ease-in-out infinite;
+            backdrop-filter: blur(10px);
+        }
+
+        @keyframes fadeInOut {
+            0%, 100% { opacity: 0.6; transform: translateY(0); }
+            50% { opacity: 1; transform: translateY(-3px); }
+        }
+
+        .confetti {
+            position: fixed;
+            pointer-events: none;
+        }
+
+        .blow-indicator {
+            position: absolute;
+            top: -90px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 10px;
+            background: rgba(151, 149, 173, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .blow-indicator.show {
+            opacity: 1;
+        }
+
+        .blow-level {
+            height: 100%;
+            background: linear-gradient(90deg, #7dd3c0, #ff6b9d);
+            width: 0;
+            transition: width 0.1s;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="stars" id="stars"></div>
+
+    <div class="message">
+        <h1>Happy birthday Adel &lt;3</h1>
+        <p>Enjoy your special day!! 🎉</p>
+    </div>
+
+    <div class="cake-container">
+        <div class="blow-indicator" id="blowIndicator">
+            <div class="blow-level" id="blowLevel"></div>
+        </div>
+        <div class="glow" id="glow"></div>
+        <div class="smoke" id="smoke"></div>
+        <div class="candle">
+            <div class="flame" id="flame"></div>
+        </div>
+        
+        <div class="cake">
+            <div class="cake-layer layer-top"></div>
+            <div class="frosting frosting-top"></div>
+            <div class="frosting-drop drop1"></div>
+            <div class="frosting-drop drop2"></div>
+            <div class="frosting-drop drop3"></div>
+            <div class="frosting-drop drop4"></div>
+            <div class="decoration dec1"></div>
+            <div class="decoration dec2"></div>
+            <div class="decoration dec3"></div>
+            <div class="decoration dec4"></div>
+            <div class="decoration dec5"></div>
+            
+            <div class="cake-layer layer-middle"></div>
+            <div class="frosting frosting-middle"></div>
+            
+            <div class="cake-layer layer-bottom"></div>
+        </div>
+    </div>
+
+    <div class="instruction" id="instruction">تمنى أمنية وانفخ شمعتك 🕯️</div>
+
+    <script>
+        let audioContext;
+        let analyser;
+        let microphone;
+        let isBlown = false;
+        let isListening = false;
+        let blowStrength = 0;
+        let blowDuration = 0;
+        let lastHighValue = 0;
+
+        // إنشاء النجوم في الخلفية
+        function createStars() {
+            const starsContainer = document.getElementById('stars');
+            for (let i = 0; i < 100; i++) {
+                const star = document.createElement('div');
+                star.className = 'star';
+                star.style.left = Math.random() * 100 + '%';
+                star.style.top = Math.random() * 100 + '%';
+                star.style.animationDelay = Math.random() * 3 + 's';
+                starsContainer.appendChild(star);
+            }
+        }
+
+        // طلب الوصول للمايك
+        async function initMicrophone() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ 
+                    audio: {
+                        echoCancellation: false,
+                        noiseSuppression: false,
+                        autoGainControl: false,
+                        sampleRate: 44100
+                    } 
+                });
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+                analyser = audioContext.createAnalyser();
+                microphone = audioContext.createMediaStreamSource(stream);
+                microphone.connect(analyser);
+                
+                // إعدادات محسّنة لاكتشاف النفخ
+                analyser.fftSize = 2048;
+                analyser.smoothingTimeConstant = 0.3;
+                analyser.minDecibels = -90;
+                analyser.maxDecibels = -10;
+                
+                isListening = true;
+                detectBlow();
+            } catch (err) {
+                console.log('Microphone access denied:', err);
+                document.getElementById('instruction').innerHTML = '⚠️ يرجى السماح بالوصول للمايك من إعدادات المتصفح<br><small>اضغط على أيقونة القفل 🔒 بجانب الرابط واختر "السماح" للميكروفون</small>';
+                document.getElementById('instruction').style.fontSize = '1.1rem';
+                document.getElementById('instruction').style.color = '#ff6b9d';
+            }
+        }
+
+        function detectBlow() {
+            if (!isListening) return;
+            
+            const bufferLength = analyser.frequencyBinCount;
+            const dataArray = new Uint8Array(bufferLength);
+            const timeArray = new Uint8Array(analyser.fftSize);
+            
+            const blowIndicator = document.getElementById('blowIndicator');
+            const blowLevel = document.getElementById('blowLevel');
+            
+            function check() {
+                if (isBlown || !isListening) return;
+                
+                analyser.getByteFrequencyData(dataArray);
+                analyser.getByteTimeDomainData(timeArray);
+                
+                // تحليل الترددات المنخفضة (100-500 Hz) - نطاق النفخ
+                let lowFreqSum = 0;
+                const lowFreqCount = Math.floor(bufferLength * 0.15);
+                for (let i = 0; i < lowFreqCount; i++) {
+                    lowFreqSum += dataArray[i];
+                }
+                const lowFreqAvg = lowFreqSum / lowFreqCount;
+                
+                // تحليل الترددات العالية للتمييز عن الكلام
+                let highFreqSum = 0;
+                const highFreqStart = Math.floor(bufferLength * 0.3);
+                for (let i = highFreqStart; i < bufferLength; i++) {
+                    highFreqSum += dataArray[i];
+                }
+                const highFreqAvg = highFreqSum / (bufferLength - highFreqStart);
+                
+                // حساب التباين في الموجة الصوتية
+                let variance = 0;
+                for (let i = 0; i < timeArray.length; i++) {
+                    variance += Math.abs(timeArray[i] - 128);
+                }
+                variance = variance / timeArray.length;
+                
+                // النفخ: ترددات منخفضة عالية + ترددات عالية منخفضة + تباين عالي
+                const isBlowPattern = lowFreqAvg > 25 && 
+                                     highFreqAvg < 15 && 
+                                     variance > 10 &&
+                                     (lowFreqAvg / (highFreqAvg + 1)) > 2;
+                
+                if (isBlowPattern) {
+                    blowStrength = Math.min(lowFreqAvg, 100);
+                    blowDuration++;
+                    lastHighValue = Date.now();
+                    
+                    // عرض مؤشر قوة النفخ
+                    blowIndicator.classList.add('show');
+                    blowLevel.style.width = (blowStrength) + '%';
+                    
+                    // إطفاء الشمعة عند النفخ المستمر القوي
+                    if (blowDuration > 8 && blowStrength > 35) {
+                        blowOutCandle();
+                        return;
+                    }
+                } else {
+                    // إخفاء المؤشر بعد توقف النفخ
+                    if (Date.now() - lastHighValue > 500) {
+                        blowIndicator.classList.remove('show');
+                        blowDuration = 0;
+                        blowStrength = 0;
+                    }
+                }
+                
+                requestAnimationFrame(check);
+            }
+            
+            check();
+        }
+
+        function blowOutCandle() {
+            if (isBlown) return;
+            
+            isBlown = true;
+            isListening = false;
+            
+            const flame = document.getElementById('flame');
+            const glow = document.getElementById('glow');
+            const smoke = document.getElementById('smoke');
+            const instruction = document.getElementById('instruction');
+            const blowIndicator = document.getElementById('blowIndicator');
+            
+            blowIndicator.classList.remove('show');
+            
+            flame.classList.add('blown');
+            glow.classList.add('blown');
+            smoke.classList.add('active');
+            
+            setTimeout(() => {
+                instruction.textContent = '🎊 Happy birthday to my soulmate, being with you is the greatest gift 🎊';
+                instruction.style.fontSize = '1.5rem';
+                instruction.style.animation = 'none';
+                instruction.style.opacity = '1';
+                instruction.style.background = 'linear-gradient(135deg, rgba(255, 107, 157, 0.2), rgba(212, 165, 245, 0.2))';
+                instruction.style.borderColor = 'rgba(255, 107, 157, 0.5)';
+            }, 600);
+            
+            createConfetti();
+        }
+
+        function createConfetti() {
+            const colors = ['#ff6b9d', '#7dd3c0', '#ffd700', '#a6c1ee', '#fbc2eb', '#ff9a9e'];
+            
+            for (let i = 0; i < 100; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.width = Math.random() * 12 + 6 + 'px';
+                    confetti.style.height = confetti.style.width;
+                    confetti.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = '-20px';
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.opacity = '1';
+                    confetti.style.position = 'fixed';
+                    confetti.style.zIndex = '1000';
+                    
+                    const duration = Math.random() * 3 + 2;
+                    const rotation = Math.random() * 360;
+                    
+                    confetti.style.animation = `confettiFall ${duration}s linear`;
+                    confetti.style.transform = `rotate(${rotation}deg)`;
+                    
+                    document.body.appendChild(confetti);
+                    
+                    setTimeout(() => confetti.remove(), duration * 1000);
+                }, i * 30);
+            }
+        }
+
+        // تهيئة الصفحة
+        window.addEventListener('load', () => {
+            createStars();
+            
+            // الانتظار قليلاً قبل طلب المايك لتجربة أفضل
+            setTimeout(() => {
+                initMicrophone();
+            }, 1000);
+        });
+
+        // إضافة أنيميشن للكونفيتي
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes confettiFall {
+                0% {
+                    transform: translateY(-20px) rotate(0deg);
+                    opacity: 1;
+                }
+                100% {
+                    transform: translateY(100vh) rotate(720deg);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
